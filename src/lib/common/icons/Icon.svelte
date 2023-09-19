@@ -1,0 +1,39 @@
+<script>
+  export let size = ''; // 'small' | 'large' (medium by default)
+</script>
+
+<svg
+  class="sw-svg-icon {size}"
+  tabindex="-1"
+>
+  <path
+    fill-rule="evenodd"
+    d="M4.667 16.39v-1.057H4a.667.667 0 0 1-.667-.666v-8c0-.368.3-.667.667-.667h13.333c.368 0 .667.299.667.667V10h1.333V6.667c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v8c0 .869.557 1.61 1.333 1.886v3.056l2.943-2.942h5.057v-1.334H5.724l-1.057 1.058Z"
+    clip-rule="evenodd"
+  />
+  <path
+    fill-rule="evenodd"
+    d="M20.666 16a.667.667 0 0 1-.666.667h-.667v1.057l-1.057-1.057h-3.61A.667.667 0 0 1 14 16v-2.667c0-.368.3-.666.666-.666H20c.367 0 .666.298.666.666V16ZM20 11.333h-5.334c-1.102 0-2 .898-2 2V16c0 1.103.898 2 2 2h3.058l2.942 2.943v-3.057A2.004 2.004 0 0 0 22 16v-2.667c0-1.102-.898-2-2-2Z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+<style lang="scss">
+  .sw-svg-icon {
+    fill: currentColor;
+    height: var(--rhythm-3);
+    width: var(--rhythm-3);
+
+    &.small {
+      height: var(--rhythm-2);
+      width: var(--rhythm-2);
+    }
+    &.large {
+      height: var(--rhythm-5);
+      width: var(--rhythm-5);
+    }
+    &:focus {
+      outline: 0;
+    }
+  }
+</style>
