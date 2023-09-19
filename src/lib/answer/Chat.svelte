@@ -5,6 +5,8 @@
   import { delay, distinctUntilChanged, filter } from 'rxjs';
   import { chat, question } from '../core/data';
   import Icon from '../common/icons/Icon.svelte';
+  import Moron from '$lib/special/Moron.svelte';
+  import Hal from '$lib/special/Hal.svelte';
 
   export let fullscreen = true;
   export let show = !fullscreen;
@@ -12,7 +14,9 @@
   let entriesContainerElement: HTMLDivElement;
 
   let isScrolling = false;
-  let entries: { question: string; answer: string[] }[] = [];
+  let entries: { question: string; answer: string[]; special?: string }[] = [];
+  let showMoron = false;
+  let showHAL = false;
 
   onMount(() => {
     const subs = [
@@ -26,6 +30,15 @@
           entriesContainerElement.scrollBy({ top: 500, behavior: 'smooth' });
         }),
       chat.subscribe((entry) => {
+        if (entry.special === 'MORON') {
+          showMoron = true;
+          setTimeout(() => {
+            showMoron = false;
+          }, 1000);
+        }
+        if (entry.special === 'HAL') {
+          showHAL = true;
+        }
         entries = [...entries, entry];
       }),
     ];
@@ -77,6 +90,9 @@
     </div>
   </div>
 {/if}
+
+<Moron show={showMoron} />
+<Hal show={showHAL} />
 
 <style lang="scss">
   .sw-chat {
